@@ -54,12 +54,12 @@ class LoginViewController: UIViewController,FBSDKLoginButtonDelegate {
                     alert.show()
                     
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Home") as! MainController
+                        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Front") as! TimelineTableViewController
                         self.presentViewController(viewController, animated: true, completion: nil)
                     })
                     
                 } else {
-                    var alert = UIAlertView(title: "Error", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
+                    var alert = UIAlertView(title: "Error", message: "Please try again!", delegate: self, cancelButtonTitle: "OK")
                     alert.show()
                 }
             })

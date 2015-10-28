@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		962B8DD11BE00158009AAF05 /* TimelineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B8DD01BE00158009AAF05 /* TimelineTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		962B8DD31BE002FB009AAF05 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B8DD21BE002FB009AAF05 /* ComposeViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		962B8DD51BE16F7B009AAF05 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B8DD41BE16F7B009AAF05 /* MessageTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		962E69661BDE8247003CDB06 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 962E69651BDE8247003CDB06 /* Foundation.framework */; };
 		962E696A1BDEA7A1003CDB06 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962E69691BDEA7A1003CDB06 /* MainController.swift */; settings = {ASSET_TAGS = (); }; };
 		962E696C1BDEA9DF003CDB06 /* SignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962E696B1BDEA9DF003CDB06 /* SignupController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -65,6 +68,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		962B8DD01BE00158009AAF05 /* TimelineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineTableViewController.swift; sourceTree = "<group>"; };
+		962B8DD21BE002FB009AAF05 /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
+		962B8DD41BE16F7B009AAF05 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		962E69651BDE8247003CDB06 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		962E69691BDEA7A1003CDB06 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		962E696B1BDEA9DF003CDB06 /* SignupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupController.swift; sourceTree = "<group>"; };
@@ -179,16 +185,19 @@
 			children = (
 				96CEA9531B99DDED00DFFA46 /* AppDelegate.swift */,
 				96C749241BBC3DC90054EC87 /* LoginViewController.swift */,
+				962B8DD21BE002FB009AAF05 /* ComposeViewController.swift */,
 				96CEA9551B99DDED00DFFA46 /* FirstViewController.swift */,
 				96CEA9571B99DDED00DFFA46 /* SecondViewController.swift */,
 				96CEA9591B99DDED00DFFA46 /* Main.storyboard */,
+				962E69691BDEA7A1003CDB06 /* MainController.swift */,
+				962B8DD41BE16F7B009AAF05 /* MessageTableViewCell.swift */,
 				96CA8EF91BA1FB8800BE9B81 /* ThirdViewController.swift */,
+				962B8DD01BE00158009AAF05 /* TimelineTableViewController.swift */,
+				962E696B1BDEA9DF003CDB06 /* SignupController.swift */,
 				96CEA95C1B99DDED00DFFA46 /* Images.xcassets */,
 				96CEA95E1B99DDED00DFFA46 /* LaunchScreen.xib */,
 				96CEA9511B99DDED00DFFA46 /* Supporting Files */,
 				96CD16BA1BC1A53D0000AECB /* Header.h */,
-				962E69691BDEA7A1003CDB06 /* MainController.swift */,
-				962E696B1BDEA9DF003CDB06 /* SignupController.swift */,
 			);
 			path = Jason_mini;
 			sourceTree = "<group>";
@@ -322,7 +331,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				962B8DD31BE002FB009AAF05 /* ComposeViewController.swift in Sources */,
 				96CEA9581B99DDED00DFFA46 /* SecondViewController.swift in Sources */,
+				962B8DD11BE00158009AAF05 /* TimelineTableViewController.swift in Sources */,
+				962B8DD51BE16F7B009AAF05 /* MessageTableViewCell.swift in Sources */,
 				96CEA9541B99DDED00DFFA46 /* AppDelegate.swift in Sources */,
 				962E696C1BDEA9DF003CDB06 /* SignupController.swift in Sources */,
 				96CA8EFA1BA1FB8800BE9B81 /* ThirdViewController.swift in Sources */,

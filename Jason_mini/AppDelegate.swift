@@ -26,6 +26,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("Cq0wC7SvMiSF83pwJ2Y4QcFhU2mQbOlSnzsogkVg",
             clientKey: "YYdHuxniaSbN6pnuGs9zFunpqdmXxi2DhmhjhwTL")
         
+        let testObject = PFObject(className:"TestClass")
+        testObject["testProperty"] = "value1"
+        testObject.saveInBackgroundWithBlock{(success,error) -> Void in
+            if error == nil{
+              print("saved first object")
+            }
+        
+        }
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
