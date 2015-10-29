@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // https://parse.com/docs/ios_guide#localdatastore/iOS
         Parse.enableLocalDatastore()
         
+        UINavigationBar.appearance().barTintColor = UIColor.blueColor()
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        
         // Initialize Parse.
         Parse.setApplicationId("Cq0wC7SvMiSF83pwJ2Y4QcFhU2mQbOlSnzsogkVg",
             clientKey: "YYdHuxniaSbN6pnuGs9zFunpqdmXxi2DhmhjhwTL")

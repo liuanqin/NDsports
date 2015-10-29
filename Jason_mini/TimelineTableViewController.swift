@@ -9,11 +9,23 @@
 import UIKit
 import Parse
 
+
 class TimelineTableViewController: UITableViewController {
     
   var timelineData:NSMutableArray=NSMutableArray()
+
     
-    func loadData(){
+    override init(style: UITableViewStyle) {
+        super.init(style: style)
+        // Custom initialization
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    
+   @IBAction func loadData(){
         timelineData.removeAllObjects()
         
         var findTimelineData:PFQuery = PFQuery(className: "Send")
@@ -112,14 +124,14 @@ override func viewDidAppear(animated: Bool) {
     cell.timestampLabel.alpha = 0
     cell.usernameLabel.alpha = 0
 
-       cell.sweetTextView.text = send.objectForKey("content") as? String
+       cell.sweetTextView.text = send.objectForKey("contents") as? String
             
         var dataFormatter:NSDateFormatter = NSDateFormatter()
         dataFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         cell.timestampLabel.text = dataFormatter.stringFromDate(send.createdAt!)
 
         
-        if let sweeter: PFObject = send.objectForKey("sweeter") as? PFObject {
+        if let sweeter: PFObject = send.objectForKey("author") as? PFObject {
             var findSweeter:PFQuery = PFUser.query()!
             findSweeter.whereKey("objectId", equalTo: sweeter.objectId!)
         
