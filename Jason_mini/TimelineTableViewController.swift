@@ -7,22 +7,24 @@
 //
 
 import UIKit
+import Parse
 
 class TimelineTableViewController: UITableViewController {
     
-    var timelineData:NSMutableArray=NSMutableArray()
+  var timelineData:NSMutableArray=NSMutableArray()
     
     func loadData(){
         timelineData.removeAllObjects()
         
         var findTimelineData:PFQuery = PFQuery(className: "Send")
       
+        //findTimelineData.findObjectsInBackgroundWithBlock(<#T##block: PFQueryArrayResultBlock?##PFQueryArrayResultBlock?##([PFObject]?, NSError?) -> Void#>)
         findTimelineData.findObjectsInBackgroundWithBlock{
-            (objects:[AnyObject]?, error:NSError?)->Void in
+            (objects:[PFObject]?, error:NSError?)->Void in
             
             if error == nil{
-                for object in objects{
-                    let send:PFObject = object as PFObject
+                for object in objects!{
+                    let send:PFObject = object as! PFObject
                     self.timelineData.addObject(send)
                 }
                 
@@ -36,17 +38,16 @@ class TimelineTableViewController: UITableViewController {
         }
     }
     
-    override func viewDidLoad() {
+     override func viewDidLoad() {
         super.viewDidLoad()
         
         
     }
     
-    
-    override func viewDidAppear(animated: Bool) {
+override func viewDidAppear(animated: Bool) {
         self.loadData()
         
-        if (PFUser.currentUser() != nil){
+        if (PFUser.currentUser() == nil){
             var loginAlert:UIAlertController = UIAlertController(title:"Login", message: "Please Log In", preferredStyle: UIAlertControllerStyle.Alert)
             
             loginAlert.addTextFieldWithConfigurationHandler({
@@ -79,6 +80,7 @@ class TimelineTableViewController: UITableViewController {
             
             
         }
+}
         
         override func didReceiveMemoryWarning() {
             super.didReceiveMemoryWarning()
@@ -98,29 +100,33 @@ class TimelineTableViewController: UITableViewController {
             // Return the number of rows in the section.
             return timelineData.count
         }
-   override func tableView(tableView: UITableView?, cellForRowAtIndexPath indexPath: NSIndexPath?) -> UITableViewCell? {
-        let cell:SweetTableViewCell = tableView!.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath!) as SweetTableViewCell
+ 
     
-        let sweet:PFObject = self.timelineData.objectAtIndex(indexPath!.row) as PFObject
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
+        let cell:MessageTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! MessageTableViewCell
+    
+        let send:PFObject = self.timelineData.objectAtIndex(indexPath.row) as! PFObject
     
     cell.sweetTextView.alpha = 0
     cell.timestampLabel.alpha = 0
     cell.usernameLabel.alpha = 0
-    
-        cell.sweetTextView.text = sweet.objectForKey("content") as String
 
-    
+       cell.sweetTextView.text = send.objectForKey("content") as? String
+            
         var dataFormatter:NSDateFormatter = NSDateFormatter()
         dataFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        cell.timestampLabel.text = dataFormatter.stringFromDate(sweet.createdAt)
+        cell.timestampLabel.text = dataFormatter.stringFromDate(send.createdAt!)
+
         
-        var findSweeter:PFQuery = PFUser.query()
-        findSweeter.whereKey("objectId", equalTo: sweet.objectForKey("sweeter").objectId)
+        if let sweeter: PFObject = send.objectForKey("sweeter") as? PFObject {
+            var findSweeter:PFQuery = PFUser.query()!
+            findSweeter.whereKey("objectId", equalTo: sweeter.objectId!)
         
         findSweeter.findObjectsInBackgroundWithBlock{
-            (objects:[AnyObject]!, error:NSError!)->Void in
+            (objects:[PFObject]?, error:NSError?)->Void in
             if error == nil{
-                let user:PFUser = (objects as NSArray).lastObject as PFUser
+                let user:PFUser = (objects! as NSArray).lastObject as! PFUser
                 cell.usernameLabel.text = user.username
                 
                 UIView.animateWithDuration(0.5, animations: {
@@ -129,15 +135,8 @@ class TimelineTableViewController: UITableViewController {
                         cell.usernameLabel.alpha = 1
                     })
             }
-        }
-    
-
+            }}
         return cell
     }
-    
-        
-        
-        
-    }
-
 }
+

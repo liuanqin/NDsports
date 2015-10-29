@@ -7,19 +7,27 @@
 //
 
 import Parse
+import UIKit
 
-class ComposeViewController: UIViewController {
+class ComposeViewController: UIViewController, UITextViewDelegate {
 
-    @IBOutlet weak var writeTextView: UITextView!
+    @IBOutlet weak var sweetTextView: UITextView!
     
     @IBOutlet weak var hintLabel: UILabel!
     
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        // Custom initialization
+    }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     @IBAction func sendAction(sender: AnyObject) {
         var send:PFObject = PFObject(className: "Send")
-        send["contents"] = writeTextView.text
-        send["sweeter"] = PFUser.currentUser()
+        send["contents"] = sweetTextView.text
+        send["author"] = PFUser.currentUser()
         
         send.saveInBackground()
         
@@ -32,9 +40,14 @@ class ComposeViewController: UIViewController {
    override func viewDidLoad() {
         super.viewDidLoad()
         
-        writeTextView.layer.borderColor = UIColor.blackColor().CGColor
-        writeTextView.layer.borderWidth = 0.5
-        writeTextView.becomeFirstResponder()
+        sweetTextView.layer.borderColor = UIColor.blackColor().CGColor
+        sweetTextView.layer.borderWidth = 0.5
+        sweetTextView.becomeFirstResponder()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     
