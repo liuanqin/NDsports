@@ -114,6 +114,26 @@ override func viewDidAppear(animated: Bool) {
         }
  
     
+    @IBAction func deleteButton(sender: AnyObject) {
+        var query = PFQuery(className: "send")
+   
+        query.whereKey("author", equalTo:PFUser.currentUser()!)
+                
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            if (error == nil) {
+           PFUser.currentUser()!.removeObjectForKey("objectId")
+           PFUser.currentUser()!.saveInBackgroundWithBlock{
+            (success: Bool, error: NSError!) -> Void in
+            if (success) {
+                // The object has been saved.
+                print("success")
+            } else {
+                // There was a problem, check error.description
+                print(error)
+            }
+        }
+    }}}
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         let cell:MessageTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! MessageTableViewCell
