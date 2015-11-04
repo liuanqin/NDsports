@@ -15,13 +15,16 @@ class ComposeViewController: UIViewController, UITextViewDelegate,UIPickerViewDa
     
     @IBOutlet weak var hintLabel: UILabel!
     
-    @IBOutlet weak var locationTextField: UITextField!
    
-    @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var pickerView1: UIPickerView!
     
+    @IBOutlet weak var sportsView: UIPickerView!
     @IBOutlet weak var selectedData: UILabel!
     @IBOutlet weak var myDataPicker: UIDatePicker!
  
+    var picklabel1 = ""
+    var picklabel2 = ""
+    
     @IBAction func dataPickerAction(sender: AnyObject) {
         var dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
@@ -45,6 +48,12 @@ class ComposeViewController: UIViewController, UITextViewDelegate,UIPickerViewDa
         var send:PFObject = PFObject(className: "Send")
         send["contents"] = sweetTextView.text
         send["author"] = PFUser.currentUser()
+        send["votes"] = 0
+        send["location"] = picklabel1
+        send["sports"] = picklabel2
+        
+            
+            
         
         send.saveInBackground()
         
@@ -65,13 +74,14 @@ class ComposeViewController: UIViewController, UITextViewDelegate,UIPickerViewDa
         super.viewDidLoad()
         
         
-        pickerView.delegate = self
-        pickerView.dataSource = self;
+        pickerView1.delegate = self
+        pickerView1.dataSource = self
+        sportsView.delegate=self
+        sportsView.dataSource=self
         
-        locationTextField.inputView = pickerView
-        locationTextField.text = pickOption[0]
+        
+   
         self.selectedData.hidden=true
-        locationTextField.hidden = true
         
         sweetTextView.layer.borderColor = UIColor.blackColor().CGColor
         sweetTextView.layer.borderWidth = 0.5
@@ -82,18 +92,29 @@ class ComposeViewController: UIViewController, UITextViewDelegate,UIPickerViewDa
     
     
     // deal with picker view (location)
+    var wheelContents:[[String]] = []
     var pickOption = ["Rolfs", "Rockne", "test", "seven", "fifteen"]
+    var sportsOption = ["Rolfs", "Rockne", "test", "seven", "fifteen"]
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickOption.count
+        if (pickerView == pickerView1){
+            return pickOption.count}
+        else if (pickerView == sportsView){
+            return sportsOption.count}
+        return 1
     }
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickOption[row]
+        if (pickerView == pickerView1){
+            return pickOption[row]}
+        else if (pickerView == sportsView){
+            return sportsOption[row]}
+        return ""
     }
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
+        if (pickerView == pickerView1){
         var pickerLabel = view as! UILabel!
         if view == nil {  //if no label there yet
             pickerLabel = UILabel()
@@ -101,22 +122,34 @@ class ComposeViewController: UIViewController, UITextViewDelegate,UIPickerViewDa
             let hue = CGFloat(row)/CGFloat(pickOption.count)
             pickerLabel.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
         }
-        let titleData = pickOption[row]
+            let titleData = pickOption[row]
         let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 26.0)!,NSForegroundColorAttributeName:UIColor.blackColor()])
         pickerLabel!.attributedText = myTitle
         pickerLabel!.textAlignment = .Center
-        
+        picklabel1 = pickerLabel.text!
         return pickerLabel
+        }
+        else {
+            var pickerLabel1 = view as! UILabel!
+            if view == nil {  //if no label there yet
+                pickerLabel1 = UILabel()
+                //color the label's background
+                let hue = CGFloat(row)/CGFloat(sportsOption.count)
+                pickerLabel1.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
+            }
+            let titleData = sportsOption[row]
+            let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 26.0)!,NSForegroundColorAttributeName:UIColor.blackColor()])
+            pickerLabel1!.attributedText = myTitle
+            pickerLabel1!.textAlignment = .Center
+            picklabel2 = pickerLabel1.text!
+            return pickerLabel1
+        
+            
+        }
         
     }
-   
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        locationTextField.hidden = false
-        locationTextField.text = pickOption[row]
-    }
-
-
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

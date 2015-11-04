@@ -113,27 +113,7 @@ override func viewDidAppear(animated: Bool) {
             return timelineData.count
         }
  
-    
-    @IBAction func deleteButton(sender: AnyObject) {
-        var query = PFQuery(className: "send")
-   
-        query.whereKey("author", equalTo:PFUser.currentUser()!)
-                
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            if (error == nil) {
-           PFUser.currentUser()!.removeObjectForKey("objectId")
-           PFUser.currentUser()!.saveInBackgroundWithBlock{
-            (success: Bool, error: NSError!) -> Void in
-            if (success) {
-                // The object has been saved.
-                print("success")
-            } else {
-                // There was a problem, check error.description
-                print(error)
-            }
-        }
-    }}}
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         let cell:MessageTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! MessageTableViewCell
@@ -143,32 +123,100 @@ override func viewDidAppear(animated: Bool) {
     cell.sweetTextView.alpha = 0
     cell.timestampLabel.alpha = 0
     cell.usernameLabel.alpha = 0
+    cell.voteLabel.alpha = 0
 
+        
        cell.sweetTextView.text = send.objectForKey("contents") as? String
-            
+        print(cell.sweetTextView.text)
+        //cell.objectidLabel.text = send.objectId
+        
+        cell.locationView.text = send.objectForKey("location") as? String
+        
+        cell.sportsView.text = send.objectForKey("sports") as? String
+     
+        
         var dataFormatter:NSDateFormatter = NSDateFormatter()
         dataFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         cell.timestampLabel.text = dataFormatter.stringFromDate(send.createdAt!)
+        
+        cell.voteButton.addTarget(self, action: "vote:", forControlEvents: .TouchUpInside)
+        cell.voteButton.tag = indexPath.row
+
+        
+        var votes: Int = (send.objectForKey("votes") as? Int)!
+        cell.voteLabel.text = "\(votes)" + " people"
+        print(cell.voteLabel.text)
 
         
         if let sweeter: PFObject = send.objectForKey("author") as? PFObject {
             var findSweeter:PFQuery = PFUser.query()!
             findSweeter.whereKey("objectId", equalTo: sweeter.objectId!)
-        
+            //cell?.parseObject = object
+            
+            
         findSweeter.findObjectsInBackgroundWithBlock{
             (objects:[PFObject]?, error:NSError?)->Void in
             if error == nil{
                 let user:PFUser = (objects! as NSArray).lastObject as! PFUser
                 cell.usernameLabel.text = user.username
+
                 
+             /*   if let votes: PFObject = send.objectForKey("votes") as? PFObject {
+                    var findVotes:PFQuery = PFUser.query()!
+                    findVotes.whereKey("objectId", equalTo: votes.objectId!)
+                    
+                    //cell?.parseObject = object
+                    
+                    
+                    findVotes.findObjectsInBackgroundWithBlock{
+                        (objects:[PFObject]?, error:NSError?)->Void in
+                        if error == nil{
+                            let user:PFUser = (objects! as NSArray).lastObject as! PFUser
+                     */                              
+                
+               // var votes: Int = (send.objectForKey("votes") as? Int)!
+                //cell.voteLabel.text = "\(votes)" + " votes"
+                
+                /*var votes: PFObject=(send.objectForKey("votes") as? PFObject)!
+              print(votes)
+
+                cell.voteLabel.text = votes
+                    //"\(votes)" + " votes"
+                
+                */
                 UIView.animateWithDuration(0.5, animations: {
                         cell.sweetTextView.alpha = 1
                         cell.timestampLabel.alpha = 1
                         cell.usernameLabel.alpha = 1
+                        cell.voteLabel.alpha = 1
                     })
-            }
-            }}
+            }}}
         return cell
-    }
-}
+    
+        }
+
+    
+    @IBAction func vote(sender: UIButton){
+        sender.enabled = false
+        sender.userInteractionEnabled = false
+        sender.alpha = 0.5
+        
+        //var send = PFObject(className: "Send")
+        
+        let sendRow:PFObject = self.timelineData.objectAtIndex(sender.tag) as! PFObject
+ 
+        var votes: Int? = sendRow.objectForKey("votes") as? Int
+        print(votes)
+        // print(send.objectForKey("objectId"))
+          votes!++
+        sendRow["votes"] = votes!
+        print(votes)
+        //let usernameLabel = sender.superview?.viewWithTag(sender.tag)
+        //usernameLabel?.setNeedsDisplay()
+        loadData()
+
+        sendRow.saveInBackground()
+                }}
+     
+
 
