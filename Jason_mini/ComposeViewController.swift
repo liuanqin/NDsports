@@ -93,8 +93,8 @@ class ComposeViewController: UIViewController, UITextViewDelegate,UIPickerViewDa
     
     // deal with picker view (location)
     var wheelContents:[[String]] = []
-    var pickOption = ["Rolfs", "Rockne", "test", "seven", "fifteen"]
-    var sportsOption = ["Rolfs", "Rockne", "test", "seven", "fifteen"]
+    var pickOption = [ "Compton Ice Area","Eck Tennis Pavilion","Joyce Center","Lofts Sports Center","Notre Dame 9 Hole Golf Course","Rockne Memorial","Rolfs Aquatic Center","Rolfs Recreation Center","St. Joseph Beach","Stephen Soccer Field","Warren Golf Course","Others, please state"]
+    var sportsOption = ["Badminton", "Basketball","Cycling","Dancing","Football","Golf","Hockey","Racquetball","Rock Climbing","Rowing","Running","Soccer","Swimming","Table Tennis","Tennis","Volleyball","Weightlifting","Others, please state"]
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
@@ -123,7 +123,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate,UIPickerViewDa
             pickerLabel.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
         }
             let titleData = pickOption[row]
-        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 26.0)!,NSForegroundColorAttributeName:UIColor.blackColor()])
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 10.0)!,NSForegroundColorAttributeName:UIColor.blackColor()])
         pickerLabel!.attributedText = myTitle
         pickerLabel!.textAlignment = .Center
         picklabel1 = pickerLabel.text!
@@ -138,7 +138,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate,UIPickerViewDa
                 pickerLabel1.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
             }
             let titleData = sportsOption[row]
-            let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 26.0)!,NSForegroundColorAttributeName:UIColor.blackColor()])
+            let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 10.0)!,NSForegroundColorAttributeName:UIColor.blackColor()])
             pickerLabel1!.attributedText = myTitle
             pickerLabel1!.textAlignment = .Center
             picklabel2 = pickerLabel1.text!

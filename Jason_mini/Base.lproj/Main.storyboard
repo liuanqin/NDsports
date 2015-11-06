@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -559,11 +560,18 @@
                                 <action selector="loadData" destination="ZXj-6l-LF4" id="cZ1-Ub-ZOV"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="cWt-fe-yDY">
-                            <connections>
-                                <segue destination="i48-A7-yDj" kind="show" id="E0G-4C-1pB"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="cWt-fe-yDY">
+                                <connections>
+                                    <segue destination="i48-A7-yDj" kind="show" id="E0G-4C-1pB"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Map" style="plain" id="IYh-PF-OvA">
+                                <connections>
+                                    <segue destination="49e-Tb-3d3" kind="show" id="ewN-yc-DGJ"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
@@ -693,7 +701,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-648" y="-256"/>
+            <point key="canvasLocation" x="-730" y="-718"/>
         </scene>
         <!--Cities -->
         <scene sceneID="hXH-Ff-BQi">
@@ -738,7 +746,8 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="u7Y-xg-7CH"/>
+        <segue reference="ewN-yc-DGJ"/>
         <segue reference="lzU-1b-eKA"/>
+        <segue reference="u7Y-xg-7CH"/>
     </inferredMetricsTieBreakers>
 </document>
