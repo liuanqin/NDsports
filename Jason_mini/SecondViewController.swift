@@ -11,16 +11,17 @@ import UIKit
 class SecondViewController: UIViewController,UITableViewDataSource, UITableViewDelegate {
 
     let city = [
-        ["Paris","48.85341","2.3488"],
-        ["Beijing","39.9075","116.39723"],
-        ["Chicago","41.85003","-87.65005"],
-        ["Sydney","-33.865143","151.2099"],
-        ["Tokyo","35.6895","139.69171"],
-        ["London","51.50853","-0.12574"],
-        ["Berlin","52.52437","13.41053"],
-        ["Budapest","47.49801","19.03991"],
-        ["Rio","-22.90278"," -43.2075"],
-        ["South Bend","41.679929","-86.249806"]
+        ["Compton Ice Area","41.693804","-86.230840"],
+        ["Eck Tennis Pavilion","41.700278","-86.226397"],
+        ["Joyce Center","41.698512","-86.231294"],
+        ["Lofts Sports Center","41.700812","-86.228028"],
+        ["Notre Dame 9 Hole Golf Course","41.699529","-86.244424"],
+        ["Rockne Memorial","41.700202","-86.244028"],
+        ["Rolfs Aquatic Center","41.698544","-86.230272"],
+        ["Rolfs Recreation Center","41.700193","-86.230462"],
+        ["St. Joseph Beach","41.707258","-86.237534"],
+        ["Stephen Soccer Field","41.707788","-86.233157"],
+        ["Warren Golf Course","41.713157","-86.223698"]
     ]
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1

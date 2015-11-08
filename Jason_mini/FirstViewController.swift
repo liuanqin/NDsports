@@ -33,18 +33,7 @@ class FirstViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         }
     }
     
-    //MapView.reloadinputview
-    
-/*    override func viewDidAppear(animated: Bool) {
-        let (dictionary, error) = Locksmith.loadData(forKey: key, inService: service, forUserAccount: userAccount)
-        
-        if let dictionary = dictionary {
-            // User is already logged in, Send them to already logged in view.
-        } else {
-            self.performSegueWithIdentifier("logInViewSegue", sender: self)
 
-        }
-    }*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +69,7 @@ class FirstViewController: UIViewController, MKMapViewDelegate, CLLocationManage
             
              print("LOCATION: \(center.latitude) + \(center.longitude)")
             
-            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 4, longitudeDelta:4))
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta:0.005))
             
             self.MapView.setRegion(region, animated: true)
             
@@ -90,7 +79,7 @@ class FirstViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         }else{
         let center = CLLocationCoordinate2D(latitude:NSString(string: passedvalue1).doubleValue, longitude: NSString(string: passedvalue2).doubleValue)
             
-            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 4, longitudeDelta:4))
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta:0.005))
             
             // println("LOCATION: \(center.latitude) + \(center.longitude)")
             

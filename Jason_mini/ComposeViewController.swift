@@ -79,7 +79,48 @@ class ComposeViewController: UIViewController, UITextViewDelegate,UIPickerViewDa
         sportsView.delegate=self
         sportsView.dataSource=self
         
+        if (PFUser.currentUser() == nil){
+            var loginAlert:UIAlertController = UIAlertController(title:"Login", message: "Please Log In", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            loginAlert.addTextFieldWithConfigurationHandler({
+                textfield in
+                textfield.placeholder = "Your username"
+            })
+            loginAlert.addTextFieldWithConfigurationHandler({
+                textfield in
+                textfield.placeholder = "Your password"
+                textfield.secureTextEntry = true
+            })
+            
+            loginAlert.addAction(UIAlertAction(title: "login", style: UIAlertActionStyle.Default, handler: {
+                alertAction in
+                let textFields:NSArray = loginAlert.textFields! as NSArray
+                let usernameTextField:UITextField = textFields.objectAtIndex(0) as! UITextField
+                let passwordTextField:UITextField = textFields.objectAtIndex(1) as! UITextField
+                
+                PFUser.logInWithUsernameInBackground(usernameTextField.text!, password: passwordTextField.text!)
+                    {(user: PFUser?, error: NSError?) -> Void in
+                        if ((user) != nil) {
+                            print("Login Successfully")
+                        }else{
+                            print("Login Failed, Please try again!")
+                        }
+                }
+            }))
+            loginAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+                
+                loginAlert .dismissViewControllerAnimated(true, completion: nil)
+                
+                
+            }))
+            
+            self.presentViewController(loginAlert, animated: true, completion: nil)
+        }
         
+        func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
+            view.endEditing(true)
+            super.touchesBegan(touches, withEvent: event)
+        }
    
         self.selectedData.hidden=true
         

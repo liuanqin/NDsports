@@ -9,6 +9,12 @@
 import Parse
 
 class SignupController: UIViewController {
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+    }
+    
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -43,6 +49,8 @@ class SignupController: UIViewController {
             newUser.password = password
             newUser.email = finalEmail
             
+            
+
             // Sign up the user asynchronously
             newUser.signUpInBackgroundWithBlock({ (succeed, error) -> Void in
                 
@@ -56,14 +64,12 @@ class SignupController: UIViewController {
                     var alert = UIAlertView(title: "Success", message: "Signed Up", delegate: self, cancelButtonTitle: "OK")
                     alert.show()
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Front") as! TimelineTableViewController
+                        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("postNavigationController") as! UINavigationController
                         self.presentViewController(viewController, animated: true, completion: nil)
                     })
                 }
             })
         }
-        
     }
-    
     
 }

@@ -59,40 +59,7 @@ class TimelineTableViewController: UITableViewController {
 override func viewDidAppear(animated: Bool) {
         self.loadData()
         
-        if (PFUser.currentUser() == nil){
-            var loginAlert:UIAlertController = UIAlertController(title:"Login", message: "Please Log In", preferredStyle: UIAlertControllerStyle.Alert)
-            
-            loginAlert.addTextFieldWithConfigurationHandler({
-                textfield in
-                textfield.placeholder = "Your username"
-            })
-            loginAlert.addTextFieldWithConfigurationHandler({
-                textfield in
-                textfield.placeholder = "Your password"
-                textfield.secureTextEntry = true
-            })
-            
-            loginAlert.addAction(UIAlertAction(title: "login", style: UIAlertActionStyle.Default, handler: {
-                    alertAction in
-                let textFields:NSArray = loginAlert.textFields! as NSArray
-                let usernameTextField:UITextField = textFields.objectAtIndex(0) as! UITextField
-                let passwordTextField:UITextField = textFields.objectAtIndex(1) as! UITextField
-                
-                PFUser.logInWithUsernameInBackground(usernameTextField.text!, password: passwordTextField.text!)
-                    {(user: PFUser?, error: NSError?) -> Void in
-                        if ((user) != nil) {
-                        print("Login Successfully")
-                    }else{
-                        print("Login Failed, Please try again!")
-                    }
-                    }
-            }))
-            
-            self.presentViewController(loginAlert, animated: true, completion: nil)
-            
-            
-        }
-}
+       }
         
         override func didReceiveMemoryWarning() {
             super.didReceiveMemoryWarning()
@@ -160,30 +127,7 @@ override func viewDidAppear(animated: Bool) {
                 let user:PFUser = (objects! as NSArray).lastObject as! PFUser
                 cell.usernameLabel.text = user.username
 
-                
-             /*   if let votes: PFObject = send.objectForKey("votes") as? PFObject {
-                    var findVotes:PFQuery = PFUser.query()!
-                    findVotes.whereKey("objectId", equalTo: votes.objectId!)
-                    
-                    //cell?.parseObject = object
-                    
-                    
-                    findVotes.findObjectsInBackgroundWithBlock{
-                        (objects:[PFObject]?, error:NSError?)->Void in
-                        if error == nil{
-                            let user:PFUser = (objects! as NSArray).lastObject as! PFUser
-                     */                              
-                
-               // var votes: Int = (send.objectForKey("votes") as? Int)!
-                //cell.voteLabel.text = "\(votes)" + " votes"
-                
-                /*var votes: PFObject=(send.objectForKey("votes") as? PFObject)!
-              print(votes)
-
-                cell.voteLabel.text = votes
-                    //"\(votes)" + " votes"
-                
-                */
+     
                 UIView.animateWithDuration(0.5, animations: {
                         cell.sweetTextView.alpha = 1
                         cell.timestampLabel.alpha = 1
@@ -197,6 +141,47 @@ override func viewDidAppear(animated: Bool) {
 
     
     @IBAction func vote(sender: UIButton){
+        
+        if (PFUser.currentUser() == nil){
+            var loginAlert:UIAlertController = UIAlertController(title:"Login", message: "Please Log In", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            loginAlert.addTextFieldWithConfigurationHandler({
+                textfield in
+                textfield.placeholder = "Your username"
+            })
+            loginAlert.addTextFieldWithConfigurationHandler({
+                textfield in
+                textfield.placeholder = "Your password"
+                textfield.secureTextEntry = true
+            })
+            
+            loginAlert.addAction(UIAlertAction(title: "login", style: UIAlertActionStyle.Default, handler: {
+                alertAction in
+                let textFields:NSArray = loginAlert.textFields! as NSArray
+                let usernameTextField:UITextField = textFields.objectAtIndex(0) as! UITextField
+                let passwordTextField:UITextField = textFields.objectAtIndex(1) as! UITextField
+                
+                PFUser.logInWithUsernameInBackground(usernameTextField.text!, password: passwordTextField.text!)
+                    {(user: PFUser?, error: NSError?) -> Void in
+                        if ((user) != nil) {
+                            print("Login Successfully")
+                        }else{
+                            print("Login Failed, Please try again!")
+                        }
+                }
+            }))
+            loginAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+                
+                loginAlert .dismissViewControllerAnimated(true, completion: nil)
+                
+                
+            }))
+            
+            self.presentViewController(loginAlert, animated: true, completion: nil)
+            
+            
+        }
+
         sender.enabled = false
         sender.userInteractionEnabled = false
         sender.alpha = 0.5
