@@ -94,7 +94,6 @@ override func viewDidAppear(animated: Bool) {
 
         
        cell.sweetTextView.text = send.objectForKey("contents") as? String
-        print(cell.sweetTextView.text)
         //cell.objectidLabel.text = send.objectId
         
         cell.locationView.text = send.objectForKey("location") as? String
@@ -112,7 +111,6 @@ override func viewDidAppear(animated: Bool) {
         
         var votes: Int = (send.objectForKey("votes") as? Int)!
         cell.voteLabel.text = "\(votes)" + " people"
-        print(cell.voteLabel.text)
 
         
         if let sweeter: PFObject = send.objectForKey("author") as? PFObject {
@@ -181,27 +179,20 @@ override func viewDidAppear(animated: Bool) {
             
             
         }
-
+        else{
         sender.enabled = false
         sender.userInteractionEnabled = false
         sender.alpha = 0.5
         
-        //var send = PFObject(className: "Send")
-        
         let sendRow:PFObject = self.timelineData.objectAtIndex(sender.tag) as! PFObject
- 
+        
         var votes: Int? = sendRow.objectForKey("votes") as? Int
-        print(votes)
-        // print(send.objectForKey("objectId"))
-          votes!++
+        votes!++
         sendRow["votes"] = votes!
-        print(votes)
-        //let usernameLabel = sender.superview?.viewWithTag(sender.tag)
-        //usernameLabel?.setNeedsDisplay()
         loadData()
-
+        
         sendRow.saveInBackground()
                 }}
-     
+}
 
 

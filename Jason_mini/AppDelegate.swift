@@ -11,6 +11,7 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import Parse
 import Bolts
+import ParseFacebookUtilsV4
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,24 +29,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Initialize Parse.
         Parse.setApplicationId("Cq0wC7SvMiSF83pwJ2Y4QcFhU2mQbOlSnzsogkVg",
             clientKey: "YYdHuxniaSbN6pnuGs9zFunpqdmXxi2DhmhjhwTL")
+        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+
         
-        let testObject = PFObject(className:"TestClass")
-        testObject["testProperty"] = "value1"
-        testObject.saveInBackgroundWithBlock{(success,error) -> Void in
-            if error == nil{
-              print("saved first object")
-            }
-        
-        }
         // [Optional] Track statistics around application opens.
-        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
-        
         // ...
   //  }
 
   //  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        /*return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)*/
+    return true
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
@@ -70,6 +65,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        FBSDKAppEvents.activateApp()
+
     }
 
     func applicationWillTerminate(application: UIApplication) {

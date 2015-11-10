@@ -12,22 +12,26 @@ import FBSDKCoreKit
 import Parse
 import ParseUI
 import Foundation
+import ParseFacebookUtilsV4
 
 class LoginViewController: UIViewController,FBSDKLoginButtonDelegate {
     
+    
     //@IBOutlet var activityView: ActivityView!
     @IBOutlet weak var loginInitialLabel: UILabel!
-    @IBOutlet weak var logInSavePassLabel: UILabel!
+   
+    
+    @IBOutlet weak var displayLabel: UILabel!
     
     
     @IBOutlet weak var loginUserTextField: UITextField!
     @IBOutlet weak var loginPassTextField: UITextField!
-    @IBOutlet weak var loginSavePassSwitch: UISwitch!
     
     
     @IBAction func loginActionButton(sender: AnyObject) {
         var username = self.loginUserTextField.text
         var password = self.loginPassTextField.text
+        
         
         // Validate the text fields
         if username?.characters.count < 5 {
@@ -52,6 +56,7 @@ class LoginViewController: UIViewController,FBSDKLoginButtonDelegate {
                 if ((user) != nil) {
                     var alert = UIAlertView(title: "Success", message: "Logged In", delegate: self, cancelButtonTitle: "OK")
                     alert.show()
+                
                     
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("postNavigationController") as! UINavigationController
@@ -64,6 +69,10 @@ class LoginViewController: UIViewController,FBSDKLoginButtonDelegate {
                 }
             })
         }
+        NSUserDefaults.standardUserDefaults().setObject(self.loginUserTextField.text, forKey: "username")
+        
+        let userName = NSUserDefaults.standardUserDefaults().stringForKey("username")
+        print(userName)
     
     }
     //capture the username and password information
@@ -71,59 +80,150 @@ class LoginViewController: UIViewController,FBSDKLoginButtonDelegate {
     
 
     @IBAction func logOutAction(sender: AnyObject){
-        
+        //print(PFUser.currentUser()?.username)
         // Send a request to log out a user
         PFUser.logOut()
+        self.viewDidLoad()
         
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Login") as! LoginViewController
-            self.presentViewController(viewController, animated: true, completion: nil)
-        })
+        if (PFUser.currentUser() != nil){
+            
+            print(PFUser.currentUser()?.username)
+        }
+        
         
     }
+
+   
+    
+ 
 
     
 override func viewDidLoad() {
         super.viewDidLoad()
+
     
     //facebook login
-        if(FBSDKAccessToken.currentAccessToken()==nil)
-        {
-            print("Not logged in...");
-        }
-        else
-        {
-            print("Logged in");
-        }
-        
-        let loginButton = FBSDKLoginButton()
-        loginButton.readPermissions=["public_profile","email","user_friends"]
-        loginButton.center = CGPoint(x: self.view.frame.size.width * 0.3, y: self.view.frame.size.height * 0.7);
-        loginButton.delegate = self
+    if (PFUser.currentUser()?.username != nil){
+        displayLabel.text = "Hello, " + (PFUser.currentUser()?.username!)!
+    }
+    else {
+         displayLabel.text = "Login Please!"
+    }
+
     
-        self.view.addSubview(loginButton)
-        
-        let testObject = PFObject(className: "TestObject")
-        testObject["foo"] = "bar"
-        testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-            print("Object has been saved.")
-        }
     if(FBSDKAccessToken.currentAccessToken()==nil)
     {
         print("Not logged in...");
     }
-    else
-    {
-    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("postNavigationController") as! UINavigationController
-        self.presentViewController(viewController, animated: true, completion: nil)})
+    }
+    
+    
+    
+    let permisions = ["public_profile"]
+    var requestParameters = ["fields": "id, email, first_name, last_name"]
+    
+
+    
+    @IBAction func loginFB (sender: AnyObject) {
+    
+      var loginFB = loginButton
         
+    PFFacebookUtils.logInInBackgroundWithReadPermissions(permisions) {
+    (user: PFUser?, error: NSError?) -> Void in
+    
+    if let error = error {
+    print(error)
+    } else {
+    if let user = user {
+    print(user)
+        
+        var requestParameters = ["fields": "id, email, first_name, last_name"]
+        
+        let userDetails = FBSDKGraphRequest(graphPath: "me", parameters: requestParameters)
+        
+        userDetails.startWithCompletionHandler { (connection, result, error:NSError!) -> Void in
+            
+            if(error != nil)
+            {
+                print("\(error.localizedDescription)")
+                return
+            }
+            
+            if(result != nil)
+            {
+                
+                let userId:String = result["id"] as! String
+                let userFirstName:String? = result["first_name"] as? String
+                let userEmail:String? = result["email"] as? String
+                
+                
+                print("1\(userEmail)")
+                
+                // Save first name
+                if(userFirstName != nil)
+                {
+                    user.setObject(userFirstName!, forKey: "username")
+                    
+                }
+                
+                
+                // Save email address
+                if(userEmail != nil)
+                {
+                    user.setObject(userEmail!, forKey: "email")
+                }
+                print("2\(userEmail)")
+                user.saveInBackground()
+                print("3\(userEmail)")
+                
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                    
+                    print("4\(userEmail)")
+                    /*
+                    myUser.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
+                    
+                    if(success)
+                    {
+                    print("User details are now updated")
+                    myUser = PFUser.currentUser()!
+                    
+                    }
+                    
+                    })*/
+                    
+                }
+                
+            }
+        }
+
+       
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("postNavigationController") as! UINavigationController
+            self.presentViewController(viewController, animated: true, completion: nil)})
+    
+  
+    }
+    
     }}
+    
+    //let loginButton = FBSDKLoginButton()
+    //loginButton.readPermissions=["first_name","email","user_friends"]
+    
+    
+   // loginButton.center = CGPoint(x: self.view.frame.size.width * 0.4, y: self.view.frame.size.height * 0.8);
+   // loginButton.delegate = self
+
+    
+    //self.view.addSubview(loginButton)
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         if error == nil
         {
-            print("Login complete.")
+
+      loginButton.addTarget(self, action: "loginFB", forControlEvents: .TouchUpInside)
+            
         }
         else
         {

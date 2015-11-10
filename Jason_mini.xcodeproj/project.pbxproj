@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		962B8DD11BE00158009AAF05 /* TimelineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B8DD01BE00158009AAF05 /* TimelineTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		962B8DD31BE002FB009AAF05 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B8DD21BE002FB009AAF05 /* ComposeViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		962B8DD51BE16F7B009AAF05 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B8DD41BE16F7B009AAF05 /* MessageTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		962B8DD11BE00158009AAF05 /* TimelineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B8DD01BE00158009AAF05 /* TimelineTableViewController.swift */; };
+		962B8DD31BE002FB009AAF05 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B8DD21BE002FB009AAF05 /* ComposeViewController.swift */; };
+		962B8DD51BE16F7B009AAF05 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B8DD41BE16F7B009AAF05 /* MessageTableViewCell.swift */; };
 		962E69661BDE8247003CDB06 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 962E69651BDE8247003CDB06 /* Foundation.framework */; };
-		962E696A1BDEA7A1003CDB06 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962E69691BDEA7A1003CDB06 /* MainController.swift */; settings = {ASSET_TAGS = (); }; };
-		962E696C1BDEA9DF003CDB06 /* SignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962E696B1BDEA9DF003CDB06 /* SignupController.swift */; settings = {ASSET_TAGS = (); }; };
-		96C7491F1BBB7F6D0054EC87 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96C7491E1BBB7F6D0054EC87 /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
-		96C749211BBB7FA50054EC87 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96C749201BBB7FA50054EC87 /* FBSDKLoginKit.framework */; settings = {ASSET_TAGS = (); }; };
-		96C749251BBC3DC90054EC87 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C749241BBC3DC90054EC87 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		962E696C1BDEA9DF003CDB06 /* SignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962E696B1BDEA9DF003CDB06 /* SignupController.swift */; };
+		966F2C081BF2597600634FF9 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966F2C061BF2597600634FF9 /* ParseFacebookUtilsV4.framework */; };
+		96C7491F1BBB7F6D0054EC87 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96C7491E1BBB7F6D0054EC87 /* FBSDKCoreKit.framework */; };
+		96C749211BBB7FA50054EC87 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96C749201BBB7FA50054EC87 /* FBSDKLoginKit.framework */; };
+		96C749251BBC3DC90054EC87 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C749241BBC3DC90054EC87 /* LoginViewController.swift */; };
 		96CA8EFA1BA1FB8800BE9B81 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CA8EF91BA1FB8800BE9B81 /* ThirdViewController.swift */; };
 		96CA8EFC1BA1FF0300BE9B81 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96CA8EFB1BA1FF0300BE9B81 /* CoreMotion.framework */; };
-		96CD16BC1BC1DB7F0000AECB /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96CD16BB1BC1DB7F0000AECB /* Parse.framework */; settings = {ASSET_TAGS = (); }; };
-		96CD16BE1BC1DB8B0000AECB /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96CD16BD1BC1DB8B0000AECB /* Bolts.framework */; settings = {ASSET_TAGS = (); }; };
+		96CD16BC1BC1DB7F0000AECB /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96CD16BB1BC1DB7F0000AECB /* Parse.framework */; };
+		96CD16BE1BC1DB8B0000AECB /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96CD16BD1BC1DB8B0000AECB /* Bolts.framework */; };
 		96CD16C01BC1DBD10000AECB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96CD16BF1BC1DBD10000AECB /* AudioToolbox.framework */; };
 		96CD16C21BC1DBDD0000AECB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96CD16C11BC1DBDD0000AECB /* CFNetwork.framework */; };
 		96CD16C41BC1DBE20000AECB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96CD16C31BC1DBE20000AECB /* CoreGraphics.framework */; };
@@ -72,8 +72,10 @@
 		962B8DD21BE002FB009AAF05 /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		962B8DD41BE16F7B009AAF05 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		962E69651BDE8247003CDB06 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		962E69691BDEA7A1003CDB06 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		962E696B1BDEA9DF003CDB06 /* SignupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupController.swift; sourceTree = "<group>"; };
+		966F2C011BF254A600634FF9 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = "../../../../Downloads/parse-library-1.9.1/ParseFacebookUtils.framework"; sourceTree = "<group>"; };
+		966F2C021BF254A600634FF9 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = "../../../../Downloads/parse-library-1.9.1/ParseFacebookUtilsV4.framework"; sourceTree = "<group>"; };
+		966F2C061BF2597600634FF9 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = "FacebookSDKs-iOS-20150910/ParseFacebookUtilsV4.framework"; sourceTree = "<group>"; };
 		96C7491E1BBB7F6D0054EC87 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "FacebookSDKs-iOS-20150910/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		96C749201BBB7FA50054EC87 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "FacebookSDKs-iOS-20150910/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		96C749241BBC3DC90054EC87 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				966F2C081BF2597600634FF9 /* ParseFacebookUtilsV4.framework in Frameworks */,
 				962E69661BDE8247003CDB06 /* Foundation.framework in Frameworks */,
 				96CD16D61BC1DC370000AECB /* Social.framework in Frameworks */,
 				96CD16D41BC1DC320000AECB /* Accounts.framework in Frameworks */,
@@ -147,6 +150,9 @@
 		96CEA9451B99DDED00DFFA46 = {
 			isa = PBXGroup;
 			children = (
+				966F2C061BF2597600634FF9 /* ParseFacebookUtilsV4.framework */,
+				966F2C011BF254A600634FF9 /* ParseFacebookUtils.framework */,
+				966F2C021BF254A600634FF9 /* ParseFacebookUtilsV4.framework */,
 				962E69651BDE8247003CDB06 /* Foundation.framework */,
 				96CD16D51BC1DC370000AECB /* Social.framework */,
 				96CD16D31BC1DC320000AECB /* Accounts.framework */,
@@ -189,7 +195,6 @@
 				96CEA9551B99DDED00DFFA46 /* FirstViewController.swift */,
 				96CEA9571B99DDED00DFFA46 /* SecondViewController.swift */,
 				96CEA9591B99DDED00DFFA46 /* Main.storyboard */,
-				962E69691BDEA7A1003CDB06 /* MainController.swift */,
 				962B8DD41BE16F7B009AAF05 /* MessageTableViewCell.swift */,
 				96CA8EF91BA1FB8800BE9B81 /* ThirdViewController.swift */,
 				962B8DD01BE00158009AAF05 /* TimelineTableViewController.swift */,
@@ -339,7 +344,6 @@
 				962E696C1BDEA9DF003CDB06 /* SignupController.swift in Sources */,
 				96CA8EFA1BA1FB8800BE9B81 /* ThirdViewController.swift in Sources */,
 				96C749251BBC3DC90054EC87 /* LoginViewController.swift in Sources */,
-				962E696A1BDEA7A1003CDB06 /* MainController.swift in Sources */,
 				96CEA9561B99DDED00DFFA46 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

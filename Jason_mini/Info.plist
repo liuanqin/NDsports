@@ -5,7 +5,7 @@
 	<key></key>
 	<string></string>
 	<key>CFBundleName</key>
-	<string>$(PRODUCT_NAME)</string>
+	<string>ND Sporters</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -29,12 +29,14 @@
 			<false/>
 		</dict>
 	</dict>
-	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>FacebookAppID</key>
+	<string>978125485564420</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
@@ -64,8 +66,6 @@
 	</dict>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
-	<key>FacebookAppID</key>
-	<string>978125485564420</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>UIRequiredDeviceCapabilities</key>

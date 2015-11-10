@@ -10,6 +10,11 @@ import Parse
 import UIKit
 
 class ComposeViewController: UIViewController, UITextViewDelegate,UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+    }
 
     @IBOutlet weak var sweetTextView: UITextView!
     
@@ -29,8 +34,6 @@ class ComposeViewController: UIViewController, UITextViewDelegate,UIPickerViewDa
         var dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
         var strDate = dateFormatter.stringFromDate(myDataPicker.date)
-        self.selectedData.hidden=false
-        self.selectedData.text = strDate
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -110,19 +113,17 @@ class ComposeViewController: UIViewController, UITextViewDelegate,UIPickerViewDa
             loginAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
                 
                 loginAlert .dismissViewControllerAnimated(true, completion: nil)
-                
-                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("postNavigationController") as! UINavigationController
+                    self.presentViewController(viewController, animated: true, completion: nil)})
             }))
             
             self.presentViewController(loginAlert, animated: true, completion: nil)
         }
         
-        func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
-            view.endEditing(true)
-            super.touchesBegan(touches, withEvent: event)
-        }
+  
    
-        self.selectedData.hidden=true
+        //self.selectedData.hidden=true
         
         sweetTextView.layer.borderColor = UIColor.blackColor().CGColor
         sweetTextView.layer.borderWidth = 0.5

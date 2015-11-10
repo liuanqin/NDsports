@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Jason_mini/LoginViewController.swift"
-            timestampString = "465328772.410704"
+            timestampString = "468867670.361852"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
             landmarkName = "LoginViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Jason_mini/LoginViewController.swift"
-            timestampString = "467753241.609944"
+            timestampString = "468867670.361852"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "loginActionButton(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Jason_mini/TimelineTableViewController.swift"
-            timestampString = "468712405.094442"
+            timestampString = "468781009.338059"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
             <Locations>
@@ -106,11 +106,11 @@
                   moduleName = "Jason_mini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Jason/Documents/ND2015_Fall/Mobile%20project/Jason_mini/Jason_mini/TimelineTableViewController.swift"
-                  timestampString = "468714694.012145"
+                  timestampString = "468879328.321586"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "131"
-                  endingLineNumber = "131"
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
                   offsetFromSymbolStart = "1023">
                </Location>
                <Location
@@ -121,11 +121,11 @@
                   moduleName = "Jason_mini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Jason/Documents/ND2015_Fall/Mobile%20project/Jason_mini/Jason_mini/TimelineTableViewController.swift"
-                  timestampString = "468714694.012558"
+                  timestampString = "468879328.321824"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "132"
-                  endingLineNumber = "132"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130"
                   offsetFromSymbolStart = "22">
                </Location>
             </Locations>
@@ -154,7 +154,7 @@
                   moduleName = "Jason_mini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Jason/Documents/ND2015_Fall/Mobile%20project/Jason_mini/Jason_mini/SignupController.swift"
-                  timestampString = "468714694.014147"
+                  timestampString = "468879328.323183"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -169,7 +169,7 @@
                   moduleName = "Jason_mini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Jason/Documents/ND2015_Fall/Mobile%20project/Jason_mini/Jason_mini/SignupController.swift"
-                  timestampString = "468714694.014403"
+                  timestampString = "468879328.323619"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -184,7 +184,7 @@
                   moduleName = "Jason_mini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Jason/Documents/ND2015_Fall/Mobile%20project/Jason_mini/Jason_mini/SignupController.swift"
-                  timestampString = "468714694.014694"
+                  timestampString = "468879328.323978"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -199,11 +199,11 @@
                   moduleName = "Jason_mini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Jason/Documents/ND2015_Fall/Mobile%20project/Jason_mini/Jason_mini/SignupController.swift"
-                  timestampString = "468714694.014908"
+                  timestampString = "468879328.324333"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
                   offsetFromSymbolStart = "70">
                </Location>
             </Locations>
@@ -232,12 +232,12 @@
                   moduleName = "Jason_mini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Jason/Documents/ND2015_Fall/Mobile%20project/Jason_mini/Jason_mini/SignupController.swift"
-                  timestampString = "468714694.01751"
+                  timestampString = "468879328.328387"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "50"
-                  endingLineNumber = "50"
-                  offsetFromSymbolStart = "5301">
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "5304">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -247,14 +247,46 @@
                   moduleName = "Jason_mini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Jason/Documents/ND2015_Fall/Mobile%20project/Jason_mini/Jason_mini/SignupController.swift"
-                  timestampString = "468714694.017782"
+                  timestampString = "468879328.328622"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
                   offsetFromSymbolStart = "58">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Jason_mini/AppDelegate.swift"
+            timestampString = "468875806.143754"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Jason_mini/LoginViewController.swift"
+            timestampString = "468880436.04177"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
+            landmarkName = "loginButton(_:didCompleteWithResult:error:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

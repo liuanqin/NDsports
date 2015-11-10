@@ -55,7 +55,7 @@ class SecondViewController: UIViewController,UITableViewDataSource, UITableViewD
 
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Cities"
+        return "Locations"
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
