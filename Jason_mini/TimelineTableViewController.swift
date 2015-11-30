@@ -99,6 +99,7 @@ override func viewDidAppear(animated: Bool) {
         cell.locationView.text = send.objectForKey("location") as? String
         
         cell.sportsView.text = send.objectForKey("sports") as? String
+        cell.timeView.text = send.objectForKey("time") as? String
      
         
         var dataFormatter:NSDateFormatter = NSDateFormatter()

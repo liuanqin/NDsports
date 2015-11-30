@@ -20,6 +20,7 @@ class MessageTableViewCell: UITableViewCell {
     @IBOutlet weak var sweetTextView: UITextView!
     @IBOutlet weak var locationView: UILabel!
     @IBOutlet weak var sportsView: UILabel!
+    @IBOutlet weak var timeView: UILabel!
     
     var parseObject:PFObject?
     

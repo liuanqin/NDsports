@@ -29,11 +29,13 @@ class ComposeViewController: UIViewController, UITextViewDelegate,UIPickerViewDa
  
     var picklabel1 = ""
     var picklabel2 = ""
+    var datelabel = ""
     
     @IBAction func dataPickerAction(sender: AnyObject) {
         var dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
         var strDate = dateFormatter.stringFromDate(myDataPicker.date)
+        datelabel = strDate
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -54,6 +56,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate,UIPickerViewDa
         send["votes"] = 0
         send["location"] = picklabel1
         send["sports"] = picklabel2
+        send["time"] = datelabel
         
             
             
@@ -169,6 +172,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate,UIPickerViewDa
         pickerLabel!.attributedText = myTitle
         pickerLabel!.textAlignment = .Center
         picklabel1 = pickerLabel.text!
+            print("location is \(picklabel1)")
         return pickerLabel
         }
         else {
@@ -184,12 +188,28 @@ class ComposeViewController: UIViewController, UITextViewDelegate,UIPickerViewDa
             pickerLabel1!.attributedText = myTitle
             pickerLabel1!.textAlignment = .Center
             picklabel2 = pickerLabel1.text!
+               print("sports is \(picklabel2)")
             return pickerLabel1
         
             
         }
-        
     }
+        func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+            if (pickerView == pickerView1){
+                
+                picklabel1 = pickOption[row]
+                print("location is \(picklabel1)")
+            }
+            else {
+               
+                picklabel2 = sportsOption[row]
+                print("sports is \(picklabel2)")
+            
+                
+                
+            }
+        }
+    
     
     
     override func didReceiveMemoryWarning() {
